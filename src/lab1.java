@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class lab1 {
 
-    /** Узел кольцевого односвязного списка. */
+    //Узел кольцевого односвязного списка
     static class Node {
         int number;
         Node next;
@@ -36,12 +36,8 @@ public class lab1 {
         return first;
     }
 
-    /**
-     * Выполняет выбывание по правилам задачи.
-     * start - узел, с которого начинается счет (он же считается первым в счете).
-     * m - шаг счета.
-     * Возвращает узел, который остался последним.
-     */
+    
+    //Выполняет выбывание по правилам задачи.
     static Node countOut(Node start, int m) {
         Node current = start;
         Node previous = start;
@@ -66,19 +62,15 @@ public class lab1 {
         return current;
     }
 
-    /**
-     * Пункт а): счет начинался с человека №1.
-     */
+    //а): счет начинался с человека №1
     static int findRemainingFromFirst(int n, int m) {
         Node first = buildCircle(n);
         Node remaining = countOut(first, m);
         return remaining.number;
     }
 
-    /**
-     * Пункт б): известен M и номер оставшегося L.
-     * Найти номер человека, с которого начинался счет.
-     */
+    //Пункт б): известен M и номер оставшегося L
+    //Найти номер человека, с которого начинался счет
     static int findStartByRemaining(int n, int m, int L) {
         for (int start = 1; start <= n; start++) {
             Node first = buildCircle(n);

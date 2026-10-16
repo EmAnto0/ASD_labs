@@ -5,7 +5,6 @@ import java.util.Scanner;
  * Вариант 2.
  *
  * Дана разреженная матрица CRS. Обойти её по варианту 2
- * (столбцы справа налево, внутри каждого - снизу вверх)
  * и вывести все положительные элементы.
  */
 public class lab2 {
@@ -17,10 +16,7 @@ public class lab2 {
     int[] colIndex;    // номера столбцов для каждого значения
     int[] rowPointer;  // границы строк в values/colIndex
 
-    /**
-     * Конструктор: принимает матрицу как int[][] и превращает её в CRS.
-     * Попутно считает число ненулевых (nnz).
-     */
+    // 
     lab2(int[][] matrix) {
         this.rows = matrix.length;
         this.cols = matrix[0].length;
@@ -55,10 +51,7 @@ public class lab2 {
         rowPointer[rows] = k; // конец последней строки
     }
 
-    /**
-     * Возвращает значение элемента (i, j).
-     * Если в этой позиции ноль - возвращает 0.
-     */
+    //Возвращает значение элемента (i, j)
     int get(int i, int j) {
         int start = rowPointer[i];
         int end = rowPointer[i + 1];
@@ -70,10 +63,7 @@ public class lab2 {
         return 0;
     }
 
-    /**
-     * Обход по варианту 2: столбцы справа налево, внутри - снизу вверх.
-     * Выводит все положительные элементы.
-     */
+    //Обход
     void traverseAndPrintPositive() {
         System.out.print("Positive elements in traversal order: ");
         for (int j = cols - 1; j >= 0; j--) {          // столбцы: справа налево
@@ -90,10 +80,10 @@ public class lab2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("=== Sparse matrix (CRS), variant 2 ===");
-        System.out.print("Enter number of rows: ");
+        System.out.println("Sparse matrix (CRS), variant 2");
+        System.out.print("Number of rows: ");
         int rows = sc.nextInt();
-        System.out.print("Enter number of columns: ");
+        System.out.print("Number of columns: ");
         int cols = sc.nextInt();
 
         int[][] matrix = new int[rows][cols];

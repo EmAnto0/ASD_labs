@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Лабораторная работа №2. Разреженные матрицы.
- * Вариант 2.
- *
- * Дана разреженная матрица CRS. Обойти её по варианту 2
+ * Задача 2. Дана разреженная матрица CRS. Обойти её по варианту 2
  * и вывести все положительные элементы.
  */
 public class lab2 {
@@ -21,7 +18,7 @@ public class lab2 {
         this.rows = matrix.length;
         this.cols = matrix[0].length;
 
-        // Первый проход: считаем nnz
+        // Первый проход: nnz
         int nnz = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -31,12 +28,12 @@ public class lab2 {
             }
         }
 
-        // Выделяем память
+        // Память
         values = new int[nnz];
         colIndex = new int[nnz];
         rowPointer = new int[rows + 1];
 
-        // Второй проход: заполняем values, colIndex, rowPointer
+        // Второй проход: values, colIndex, rowPointer
         int k = 0;
         for (int i = 0; i < rows; i++) {
             rowPointer[i] = k;
@@ -51,7 +48,7 @@ public class lab2 {
         rowPointer[rows] = k; // конец последней строки
     }
 
-    //Возвращает значение элемента (i, j)
+    //Значение элемента (i, j)
     int get(int i, int j) {
         int start = rowPointer[i];
         int end = rowPointer[i + 1];
@@ -80,7 +77,7 @@ public class lab2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Sparse matrix (CRS), variant 2");
+        System.out.println("Sparse matrix (CRS)");
         System.out.print("Number of rows: ");
         int rows = sc.nextInt();
         System.out.print("Number of columns: ");

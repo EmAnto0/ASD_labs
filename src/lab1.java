@@ -1,12 +1,17 @@
 import java.util.Scanner;
 
 /**
- * Лабораторная работа №1. Списки.
- * Вариант 2.
- *
- * В круге стоят N человек, пронумерованных 1..N.
- * Считающий ведет счет до M, человек на котором остановился счет - выходит.
- * Счет продолжается со следующего.
+ * Задача 2. Вокруг считающего стоит N человек, из которых выделен первый, 
+ * а остальные занумерованы по часовой стрелке числами от 2 до N. 
+ * Считающий, начиная с кого-то, ведет счет до M. 
+ * Человек, на котором остановился счет, выходит из круга. 
+ * Счет продолжается со следующего человека и так до тех пор, 
+ * пока не останется один человек. 
+ * Определить
+ * a) номер оставшегося человека, если известно M и то, 
+ *    что счет начинался с первого человека;
+ * b) номер человека c которого начинался счет, 
+ *    если известно M и номер оставшегося человека L.
  */
 public class lab1 {
 
@@ -21,10 +26,8 @@ public class lab1 {
         }
     }
 
-    /**
-     * Строит кольцевой список из n узлов с номерами 1..n.
-     * Возвращает ссылку на узел с номером 1.
-     */
+    //Кольцевой список из n узлов с номерами 1..n.
+    //Возвращает ссылку на узел с номером 1.
     static Node buildCircle(int n) {
         Node first = new Node(1);
         Node last = first;
@@ -36,20 +39,19 @@ public class lab1 {
         return first;
     }
 
-    
-    //Выполняет выбывание по правилам задачи.
+    // Выход из круга
     static Node countOut(Node start, int m) {
         Node current = start;
         Node previous = start;
 
-        // Ищем узел, стоящий перед start
+        // Узел перед start
         while (previous.next != start) {
             previous = previous.next;
         }
 
-        // Пока в круге больше одного узла
+        // Пока больше одного узла
         while (current.next != current) {
-            // Отсчитываем m-1 шагов (current считается первым)
+            // Шаги
             for (int i = 1; i < m; i++) {
                 previous = current;
                 current = current.next;
@@ -62,15 +64,14 @@ public class lab1 {
         return current;
     }
 
-    //а): счет начинался с человека №1
+    //а): Счет начинался с №1
     static int findRemainingFromFirst(int n, int m) {
         Node first = buildCircle(n);
         Node remaining = countOut(first, m);
         return remaining.number;
     }
 
-    //Пункт б): известен M и номер оставшегося L
-    //Найти номер человека, с которого начинался счет
+    //б): Найти номер, с которого начинался счет
     static int findStartByRemaining(int n, int m, int L) {
         for (int start = 1; start <= n; start++) {
             Node first = buildCircle(n);
@@ -95,11 +96,11 @@ public class lab1 {
         System.out.print("M: ");
         int m = sc.nextInt();
 
-        // Пункт а)
+        //а)
         int remaining = findRemainingFromFirst(n, m);
         System.out.println("\na) if begin from person №1, ending №" + remaining);
 
-        // Пункт б)
+        //б)
         System.out.print("\nL: ");
         int L = sc.nextInt();
         int startNumber = findStartByRemaining(n, m, L);

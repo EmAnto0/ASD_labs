@@ -1,18 +1,13 @@
-## Getting Started
+Вариант 2.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Лабораторная №1
+Задача 2. Вокруг считающего стоит N человек, из которых выделен первый, а остальные занумерованы по часовой стрелке числами от 2 до N. Считающий, начиная с кого-то, ведет счет до M. Человек, на котором остановился счет, выходит из круга. Счет продолжается со следующего человека и так до тех пор, пока не останется один человек. 
+Определить
+a) номер оставшегося человека, если известно M и то, что счет начинался с первого человека;
+b) номер человека c которого начинался счет, если известно M и номер оставшегося человека L.
 
-## Folder Structure
+Лабораторная №2
+Задача 2. Дана разреженная матрица CRS. Обойти её по варианту 2 и вывести все положительные элементы. 
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Лабораторная №3
+Задача 2. Дано бинарное дерево. Найти самый длинный от корня путь, проходящий только по вершинам с нечётными номерами.
